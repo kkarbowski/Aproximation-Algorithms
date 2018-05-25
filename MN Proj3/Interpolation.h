@@ -14,13 +14,13 @@ class Interpolation
 public:
 	Interpolation();
 
-	int lagrange(const char *inputFile, const char *outputFile, int delta);
-	int spline3Deg(const char *inputFile, const char *outputFile, int delta);
+	int lagrange(const char *inputFile, const char *outputFile, int delta, int delta2);
+	int spline3Deg(const char *inputFile, const char *outputFile, int delta, int delta2);
 
-	double fiFunc(double x, int index, int delta);
-	double interpolationLagrangeFunc(double x, int delta);
-	void generateSplineFuncs(int delta);
-	double splineCalcValue(double x, int delta);
+	double fiFunc(double x, int index);
+	double interpolationLagrangeFunc(double x);
+	void generateSplineFuncs();
+	double splineCalcValue(double x);
 
 	~Interpolation();
 private:
@@ -29,9 +29,9 @@ private:
 	vector<Point> pickedPoints;
 	MatricesOperations matOp;
 	Matrix resultMat;
-	//int delta;
+	int subintervals;
 
-	void readData(const char *path);
+	void readData(const char *path, int delta, int delta2);
 	void writeData(const char *path);
 	void clearData();
 };
