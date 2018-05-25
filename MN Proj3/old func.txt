@@ -1,0 +1,22 @@
+
+	// Pivoting
+	for (int i = 0; i < n; ++i) {
+		int row = i;
+		double tmp;
+		for (int j = i; j < n; ++j)
+			if (abs(matU(j, i)) > abs(matU(row, i)))
+				row = j;
+		if (row != i) {
+			for (int j = 0; j < n; ++j) {
+				tmp = matU(row, j);
+				matU(row, j) = matU(i, j);
+				matU(i, j) = tmp;
+			}
+			tmp = vectorB(row);
+			vectorB(row) = vectorB(i);
+			vectorB(i) = tmp;
+		}
+	}
+	//
+	matU.print(matU.getHeight(), 20);
+	getchar();
