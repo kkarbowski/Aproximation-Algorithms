@@ -7,18 +7,17 @@
 using namespace std;
 
 int main(int argc, char *argv[]) {
-	//if (argc < 4) return 0;
+	if (argc < 5) return 0;
 
-	//int delta = atoi(argv[1]);
-	//string inputFile = argv[2];
-	//string outputFile = argv[3];
-	string inputFile = "./przyk1.txt";
-	string outputFile = "./przyk1";
+	string inputFile = argv[1];
+	string outputFile = argv[2];
+	int delta = atoi(argv[3]);
+	int delta2 = atoi(argv[4]);
 
 	Interpolation inter;
 	cout << "Liczba wybranych punktow: ";
-	cout << inter.lagrange(inputFile.c_str(), (outputFile + ".lagr").c_str(), 0, 15);
-	inter.spline3Deg(inputFile.c_str(), (outputFile + ".spl3").c_str(), 0, 15);
+	cout << inter.lagrange(inputFile.c_str(), (outputFile + ".lagr").c_str(), delta, delta2);
+	inter.spline3Deg(inputFile.c_str(), (outputFile + ".spl3").c_str(), delta, delta2);
 	
 	getchar();
 	return 0;
